@@ -5,9 +5,12 @@ using UnityEngine;
 public class Scorer : MonoBehaviour
 {
     [SerializeField] private int score = 0;
+    string ignoreTag = "Hit";
 
     private void OnCollisionEnter(Collision other) {
-        score++;
-        Debug.Log($"Bumped this many times: {score}");
+        if (other.gameObject.tag != ignoreTag) {
+            score++;
+            Debug.Log($"Bumped this many times: {score}");
+        }
     }
 }
